@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Intro to Org mode</title>
+<meta name="author" content="(Rodrigo Dorantes-Gilardi)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/css/theme/moon.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1>Intro to Org mode</h1> <p>How to <u>export</u> in Org mode</p> <h2>Rodrigo Dorantes-Gilardi</h2> <p><a href="mailto:rodgdor@gmail.com">rodgdor@gmail.com</a></p>
+</section>
+<section>
+<section id="slide-org6268889">
+<h2 id="org6268889">What is Org mode?</h2>
+<ul>
+<li>Your life in plain text
+<ul>
+<li>Plan</li>
+<li>Capture</li>
+<li>Tables</li>
+<li><span class="underline">Export</span> &lt;- <i>This talk</i></li>
+<li>Literate programming</li>
+
+</ul></li>
+<li><a href="https://orgmode.org/org.pdf">Manual</a> with 300 pages</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orgfe2f2f9">
+<h2 id="orgfe2f2f9">Export back-ends</h2>
+<ul>
+<li>LaTeX: Research</li>
+<li>HTML: This presentation</li>
+<li>Markdown: Personal website</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org06030de">
+<h2 id="org06030de">Install</h2>
+<ol>
+<li>LaTeX already built-in.</li>
+
+<li><p>
+Hugo (static websites)
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp"><code trim>(<span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF;">ox-hugo</span>
+  <span style="color: #DCDCCC; font-weight: bold;">:ensure</span> t)
+</code></pre>
+</div></li>
+<li><p>
+Reveal.js (Presentations)
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-emacs-lisp"><code trim>(<span style="color: #F0DFAF; font-weight: bold;">use-package</span> <span style="color: #BFEBBF;">ox-reveal</span>
+  <span style="color: #DCDCCC; font-weight: bold;">:ensure</span> t)
+</code></pre>
+</div></li>
+
+</ol>
+</section>
+</section>
+<section>
+<section id="slide-org19e210e">
+<h2 id="org19e210e">Header</h2>
+<p>
+In any file with extension <code>.org</code>.
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-org"><code trim><span style="color: #b3b3b3;">#+title:</span> <span style="color: #8CD0D3; background-color: #3F3F3F; font-weight: bold;">My Presentation</span>
+<span style="color: #b3b3b3;">#+author:</span> <span style="color: #8CD0D3;">Rodrigo</span>
+<span style="color: #b3b3b3;">#+email:</span> <span style="color: #8CD0D3;">myemail@yahoo.com.mx</span>
+<span style="color: #b3b3b3;">#+date:</span> <span style="color: #8CD0D3;">&lt;2019-10-08 Tue&gt;</span>
+</code></pre>
+</div>
+<p>
+Remove date, table of contents and numbered sections.
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-org"><code trim><span style="color: #7F9F7F;">#+options: date:nil toc:nil num:nil</span>
+</code></pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org99101cf">
+<h2 id="org99101cf">Code blocks</h2>
+<p>
+Syntax highlighting supported for more than 40 languages!
+</p>
+
+<div class="org-src-container">
+
+<pre  class="src src-org"><code trim><span style="color: #7F9F7F;">#+begin_src python</span>
+<span style="color: #F0DFAF; font-weight: bold;">for</span><span style="color: #b3b3b3;"> i </span><span style="color: #F0DFAF; font-weight: bold;">in</span><span style="color: #b3b3b3;"> </span><span style="color: #DCDCCC; font-weight: bold;">range</span><span style="color: #b3b3b3;">(10):</span>
+<span style="color: #b3b3b3;">    </span><span style="color: #F0DFAF; font-weight: bold;">if</span><span style="color: #b3b3b3;"> i == 1:</span>
+<span style="color: #b3b3b3;">        </span><span style="color: #F0DFAF; font-weight: bold;">print</span><span style="color: #b3b3b3;">(</span><span style="color: #CC9393;">"hello world"</span><span style="color: #b3b3b3;">)</span>
+<span style="color: #7F9F7F;">#+end_src</span>
+</code></pre>
+</div>
+
+<div class="org-src-container">
+
+<pre  class="src src-org"><code trim><span style="color: #7F9F7F;">#+begin_src sh</span>
+<span style="color: #DCDCCC; font-weight: bold;">cd</span><span style="color: #b3b3b3;"> ~</span>
+<span style="color: #b3b3b3;">mkdir emacs_dir</span>
+<span style="color: #DFAF8F;">NEW_FILE</span><span style="color: #b3b3b3;">=emcas_dir/talk.org</span>
+<span style="color: #b3b3b3;">touch $</span><span style="color: #DFAF8F;">NEW_FILE</span>
+<span style="color: #7F9F7F;">#+end_src</span>
+
+</code></pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org25f5278">
+<h2 id="org25f5278">One Markdown to rule them all</h2>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Keys</th>
+<th scope="col" class="org-left">Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">*</td>
+<td class="org-left">bold</td>
+</tr>
+
+<tr>
+<td class="org-left">_</td>
+<td class="org-left">underline</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>[[google.com][google]]</code></td>
+<td class="org-left">link</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>[[./local_image.png]]</code></td>
+<td class="org-left">file</td>
+</tr>
+
+<tr>
+<td class="org-left">`C- &vert;`</td>
+<td class="org-left">table</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section>
+<section id="slide-orgfa0f198">
+<h2 id="orgfa0f198">LaTeX</h2>
+<p>
+<a href="./talk.pdf">LaTeX file</a>
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org08fe48f">
+<h2 id="org08fe48f">TWBS HTML</h2>
+<p>
+<a href="talkw.html">TWBS HTML file</a>
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org35ec32e">
+<h2 id="org35ec32e">Org Code</h2>
+<p>
+<a href="./talk.org">Source Org code</a>
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org344412f">
+<h2 id="org344412f">Resources</h2>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=SzA2YODtgK4&amp;t=12s">Org-Mode: Youtube Video</a></li>
+<li><a href="https://ox-hugo.scripter.co/">Ox-Hugo</a></li>
+<li><a href="https://github.com/yjwen/org-reveal">Ox-Reveal</a></li>
+<li><a href="https://github.com/marsmining/ox-twbs">Ox-Twbs</a></li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org94b35ee">
+<h2 id="org94b35ee">Thanks!</h2>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>

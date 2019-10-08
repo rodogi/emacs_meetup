@@ -1,0 +1,85 @@
+#+title: Intro to Org mode
+#+author: Rodrigo Dorantes-Gilardi
+#+email: rodgdor@gmail.com
+#+date: <2019-10-10 Thu>
+#+options: date:nil toc:nil num:nil
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
+#+REVEAL_TITLE_SLIDE: <h1>%t</h1> <p>How to <u>export</u> in Org mode</p> <h2>%a</h2> <p>%e</p>
+* What is Org mode?
+	* Your life in plain text
+		* Plan
+		* Capture
+		* Tables
+		* _Export_ <- /This talk/
+		* Literate programming
+	* [[https://orgmode.org/org.pdf][Manual]] with 300 pages
+* Export back-ends
+	* LaTeX: Research
+	* HTML: This presentation
+	* Markdown: Personal website
+* Install
+ 1) LaTeX already built-in.
+
+ 2) Hugo (static websites)
+	#+begin_src emacs-lisp
+		(use-package ox-hugo
+			:ensure t)
+	#+end_src
+ 3) Reveal.js (Presentations)
+	#+begin_src emacs-lisp
+		(use-package ox-reveal
+			:ensure t)
+	#+end_src
+* Header
+	In any file with extension =.org=.
+	#+begin_src org
+		,#+title: My Presentation
+		,#+author: Rodrigo
+		,#+email: myemail@yahoo.com.mx
+		,#+date: <2019-10-08 Tue>
+	#+end_src
+	Remove date, table of contents and numbered sections.
+	#+begin_src org
+		,#+options: date:nil toc:nil num:nil
+	#+end_src
+* Code blocks
+Syntax highlighting supported for more than 40 languages!
+
+	#+begin_src org
+		,#+begin_src python
+		for i in range(10):
+				if i == 1:
+						print("hello world")
+		,#+end_src
+	#+end_src
+	
+	#+begin_src org
+		,#+begin_src sh
+		cd ~
+		mkdir emacs_dir
+		NEW_FILE=emcas_dir/talk.org
+		touch $NEW_FILE
+		,#+end_src
+
+	#+end_src
+* One Markdown to rule them all
+| Keys                     | Action    |
+|--------------------------+-----------|
+| *                        | bold      |
+| /                        | italic    |
+| _                        | underline |
+| =[[google.com][google]]= | link      |
+| =[[./local_image.png]]=  | file      |
+| `C- \vert`             | table     |
+* LaTeX
+  [[./talk.pdf][LaTeX file]]
+* TWBS HTML
+	[[file:talkw.html][TWBS HTML file]]
+* Org Code
+	[[./talk.org][Source Org code]]
+* Resources
+  * [[https://www.youtube.com/watch?v=SzA2YODtgK4&t=12s][Org-Mode: Youtube Video]]
+	* [[https://ox-hugo.scripter.co/][Ox-Hugo]]
+	* [[https://github.com/yjwen/org-reveal][Ox-Reveal]]
+	* [[https://github.com/marsmining/ox-twbs][Ox-Twbs]]
+* Thanks!
